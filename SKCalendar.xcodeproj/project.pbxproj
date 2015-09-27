@@ -9,7 +9,29 @@
 /* Begin PBXBuildFile section */
 		2C2D08C21BB6A22B0071FD0C /* SKCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08C11BB6A22B0071FD0C /* SKCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C2D08C91BB6A22B0071FD0C /* SKCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2D08BE1BB6A22B0071FD0C /* SKCalendar.framework */; settings = {ASSET_TAGS = (); }; };
-		2C2D08CE1BB6A22B0071FD0C /* SKCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08CD1BB6A22B0071FD0C /* SKCalendarTests.swift */; };
+		2C2D08DF1BB6A2400071FD0C /* SKCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08D81BB6A2400071FD0C /* SKCalendarView.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E01BB6A2400071FD0C /* SKCalendarDayNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08D91BB6A2400071FD0C /* SKCalendarDayNameView.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E11BB6A2400071FD0C /* SKCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DA1BB6A2400071FD0C /* SKCalendarDayCell.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E21BB6A2400071FD0C /* SKCalendarMonthNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DB1BB6A2400071FD0C /* SKCalendarMonthNameView.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E31BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DC1BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E41BB6A2400071FD0C /* SKCalendarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DD1BB6A2400071FD0C /* SKCalendarHelpers.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E51BB6A2400071FD0C /* SKCircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DE1BB6A2400071FD0C /* SKCircularButton.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E71BB6A6310071FD0C /* SKCalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08E61BB6A6310071FD0C /* SKCalendarDay.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08E91BB6A6870071FD0C /* SKPresentableMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08E81BB6A6870071FD0C /* SKPresentableMonth.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08EB1BB6A6B50071FD0C /* SKCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EA1BB6A6B50071FD0C /* SKCalendarMonth.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08ED1BB6A7870071FD0C /* NSCalendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EC1BB6A7870071FD0C /* NSCalendar+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08EF1BB6AAD20071FD0C /* SKCalendarDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EE1BB6AAD20071FD0C /* SKCalendarDayTests.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D09161BB6B16F0071FD0C /* SKPresentableMonth.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08E81BB6A6870071FD0C /* SKPresentableMonth.swift */; };
+		2C2D09171BB6B16F0071FD0C /* SKCalendarDay.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08E61BB6A6310071FD0C /* SKCalendarDay.swift */; };
+		2C2D09181BB6B16F0071FD0C /* SKCalendarView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08D81BB6A2400071FD0C /* SKCalendarView.swift */; };
+		2C2D09191BB6B16F0071FD0C /* SKCalendarDayNameView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08D91BB6A2400071FD0C /* SKCalendarDayNameView.swift */; };
+		2C2D091A1BB6B16F0071FD0C /* SKCalendarDayCell.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08DA1BB6A2400071FD0C /* SKCalendarDayCell.swift */; };
+		2C2D091B1BB6B16F0071FD0C /* SKCalendarMonthNameView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08DB1BB6A2400071FD0C /* SKCalendarMonthNameView.swift */; };
+		2C2D091C1BB6B1700071FD0C /* SKCalendarHorizontalFlowLayout.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08DC1BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift */; };
+		2C2D091D1BB6B1700071FD0C /* SKCalendarHelpers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08DD1BB6A2400071FD0C /* SKCalendarHelpers.swift */; };
+		2C2D091E1BB6B1700071FD0C /* SKCircularButton.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08DE1BB6A2400071FD0C /* SKCircularButton.swift */; };
+		2C2D091F1BB6B1700071FD0C /* SKCalendarMonth.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08EA1BB6A6B50071FD0C /* SKCalendarMonth.swift */; };
+		2C2D09201BB6B1700071FD0C /* NSCalendar+Extensions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08EC1BB6A7870071FD0C /* NSCalendar+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +49,19 @@
 		2C2D08C11BB6A22B0071FD0C /* SKCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKCalendar.h; sourceTree = "<group>"; };
 		2C2D08C31BB6A22B0071FD0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C2D08C81BB6A22B0071FD0C /* SKCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C2D08CD1BB6A22B0071FD0C /* SKCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCalendarTests.swift; sourceTree = "<group>"; };
 		2C2D08CF1BB6A22B0071FD0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C2D08D81BB6A2400071FD0C /* SKCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarView.swift; sourceTree = "<group>"; };
+		2C2D08D91BB6A2400071FD0C /* SKCalendarDayNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarDayNameView.swift; sourceTree = "<group>"; };
+		2C2D08DA1BB6A2400071FD0C /* SKCalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarDayCell.swift; sourceTree = "<group>"; };
+		2C2D08DB1BB6A2400071FD0C /* SKCalendarMonthNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarMonthNameView.swift; sourceTree = "<group>"; };
+		2C2D08DC1BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarHorizontalFlowLayout.swift; sourceTree = "<group>"; };
+		2C2D08DD1BB6A2400071FD0C /* SKCalendarHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarHelpers.swift; sourceTree = "<group>"; };
+		2C2D08DE1BB6A2400071FD0C /* SKCircularButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCircularButton.swift; sourceTree = "<group>"; };
+		2C2D08E61BB6A6310071FD0C /* SKCalendarDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarDay.swift; sourceTree = "<group>"; };
+		2C2D08E81BB6A6870071FD0C /* SKPresentableMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPresentableMonth.swift; sourceTree = "<group>"; };
+		2C2D08EA1BB6A6B50071FD0C /* SKCalendarMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarMonth.swift; sourceTree = "<group>"; };
+		2C2D08EC1BB6A7870071FD0C /* NSCalendar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Extensions.swift"; sourceTree = "<group>"; };
+		2C2D08EE1BB6AAD20071FD0C /* SKCalendarDayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCalendarDayTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +104,19 @@
 		2C2D08C01BB6A22B0071FD0C /* SKCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				2C2D08C11BB6A22B0071FD0C /* SKCalendar.h */,
+				2C2D08E81BB6A6870071FD0C /* SKPresentableMonth.swift */,
+				2C2D08E61BB6A6310071FD0C /* SKCalendarDay.swift */,
+				2C2D08D81BB6A2400071FD0C /* SKCalendarView.swift */,
+				2C2D08D91BB6A2400071FD0C /* SKCalendarDayNameView.swift */,
+				2C2D08DA1BB6A2400071FD0C /* SKCalendarDayCell.swift */,
+				2C2D08DB1BB6A2400071FD0C /* SKCalendarMonthNameView.swift */,
+				2C2D08DC1BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift */,
+				2C2D08DD1BB6A2400071FD0C /* SKCalendarHelpers.swift */,
+				2C2D08DE1BB6A2400071FD0C /* SKCircularButton.swift */,
 				2C2D08C31BB6A22B0071FD0C /* Info.plist */,
+				2C2D08EA1BB6A6B50071FD0C /* SKCalendarMonth.swift */,
+				2C2D08EC1BB6A7870071FD0C /* NSCalendar+Extensions.swift */,
+				2C2D08C11BB6A22B0071FD0C /* SKCalendar.h */,
 			);
 			path = SKCalendar;
 			sourceTree = "<group>";
@@ -80,8 +124,8 @@
 		2C2D08CC1BB6A22B0071FD0C /* SKCalendarTests */ = {
 			isa = PBXGroup;
 			children = (
-				2C2D08CD1BB6A22B0071FD0C /* SKCalendarTests.swift */,
 				2C2D08CF1BB6A22B0071FD0C /* Info.plist */,
+				2C2D08EE1BB6AAD20071FD0C /* SKCalendarDayTests.swift */,
 			);
 			path = SKCalendarTests;
 			sourceTree = "<group>";
@@ -94,6 +138,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C2D08C21BB6A22B0071FD0C /* SKCalendar.h in Headers */,
+				2C2D09161BB6B16F0071FD0C /* SKPresentableMonth.swift in Headers */,
+				2C2D09171BB6B16F0071FD0C /* SKCalendarDay.swift in Headers */,
+				2C2D09181BB6B16F0071FD0C /* SKCalendarView.swift in Headers */,
+				2C2D09191BB6B16F0071FD0C /* SKCalendarDayNameView.swift in Headers */,
+				2C2D091A1BB6B16F0071FD0C /* SKCalendarDayCell.swift in Headers */,
+				2C2D091B1BB6B16F0071FD0C /* SKCalendarMonthNameView.swift in Headers */,
+				2C2D091C1BB6B1700071FD0C /* SKCalendarHorizontalFlowLayout.swift in Headers */,
+				2C2D091D1BB6B1700071FD0C /* SKCalendarHelpers.swift in Headers */,
+				2C2D091E1BB6B1700071FD0C /* SKCircularButton.swift in Headers */,
+				2C2D091F1BB6B1700071FD0C /* SKCalendarMonth.swift in Headers */,
+				2C2D09201BB6B1700071FD0C /* NSCalendar+Extensions.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +197,7 @@
 		2C2D08B51BB6A22B0071FD0C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = SK;
 				TargetAttributes = {
@@ -193,6 +249,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C2D08E01BB6A2400071FD0C /* SKCalendarDayNameView.swift in Sources */,
+				2C2D08E41BB6A2400071FD0C /* SKCalendarHelpers.swift in Sources */,
+				2C2D08EB1BB6A6B50071FD0C /* SKCalendarMonth.swift in Sources */,
+				2C2D08E51BB6A2400071FD0C /* SKCircularButton.swift in Sources */,
+				2C2D08ED1BB6A7870071FD0C /* NSCalendar+Extensions.swift in Sources */,
+				2C2D08E31BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift in Sources */,
+				2C2D08E71BB6A6310071FD0C /* SKCalendarDay.swift in Sources */,
+				2C2D08E11BB6A2400071FD0C /* SKCalendarDayCell.swift in Sources */,
+				2C2D08E21BB6A2400071FD0C /* SKCalendarMonthNameView.swift in Sources */,
+				2C2D08E91BB6A6870071FD0C /* SKPresentableMonth.swift in Sources */,
+				2C2D08DF1BB6A2400071FD0C /* SKCalendarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C2D08CE1BB6A22B0071FD0C /* SKCalendarTests.swift in Sources */,
+				2C2D08EF1BB6AAD20071FD0C /* SKCalendarDayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,28 +374,33 @@
 		2C2D08D31BB6A22B0071FD0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SKCalendar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.SKCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2C2D08D41BB6A22B0071FD0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SKCalendar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.SKCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -339,16 +411,19 @@
 		2C2D08D61BB6A22B0071FD0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SKCalendarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.SKCalendarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2C2D08D71BB6A22B0071FD0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SKCalendarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.SKCalendarTests;
