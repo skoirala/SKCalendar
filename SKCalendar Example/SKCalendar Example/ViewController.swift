@@ -15,7 +15,7 @@ class ViewController: UIViewController, SKCalendarViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.lightGray
+        self.view.backgroundColor = UIColor(red:40.0/255.0, green:197.0/255.0, blue:252.0/255.0, alpha:255.0/255.0)
         
         let calendarView = SKCalendarView(delegate: self)
         calendarView.translatesAutoresizingMaskIntoConstraints = false
