@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		2C2D08C21BB6A22B0071FD0C /* SKCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08C11BB6A22B0071FD0C /* SKCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2C2D08C91BB6A22B0071FD0C /* SKCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2D08BE1BB6A22B0071FD0C /* SKCalendar.framework */; settings = {ASSET_TAGS = (); }; };
-		2C2D08DF1BB6A2400071FD0C /* SKCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08D81BB6A2400071FD0C /* SKCalendarView.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E01BB6A2400071FD0C /* SKCalendarDayNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08D91BB6A2400071FD0C /* SKCalendarDayNameView.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E11BB6A2400071FD0C /* SKCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DA1BB6A2400071FD0C /* SKCalendarDayCell.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E21BB6A2400071FD0C /* SKCalendarMonthNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DB1BB6A2400071FD0C /* SKCalendarMonthNameView.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E31BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DC1BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E41BB6A2400071FD0C /* SKCalendarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DD1BB6A2400071FD0C /* SKCalendarHelpers.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E51BB6A2400071FD0C /* SKCircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DE1BB6A2400071FD0C /* SKCircularButton.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E71BB6A6310071FD0C /* SKCalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08E61BB6A6310071FD0C /* SKCalendarDay.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08E91BB6A6870071FD0C /* SKPresentableMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08E81BB6A6870071FD0C /* SKPresentableMonth.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08EB1BB6A6B50071FD0C /* SKCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EA1BB6A6B50071FD0C /* SKCalendarMonth.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08ED1BB6A7870071FD0C /* NSCalendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EC1BB6A7870071FD0C /* NSCalendar+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
-		2C2D08EF1BB6AAD20071FD0C /* SKCalendarDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EE1BB6AAD20071FD0C /* SKCalendarDayTests.swift */; settings = {ASSET_TAGS = (); }; };
+		2C2D08C91BB6A22B0071FD0C /* SKCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2D08BE1BB6A22B0071FD0C /* SKCalendar.framework */; };
+		2C2D08DF1BB6A2400071FD0C /* SKCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08D81BB6A2400071FD0C /* SKCalendarView.swift */; };
+		2C2D08E01BB6A2400071FD0C /* SKCalendarDayNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08D91BB6A2400071FD0C /* SKCalendarDayNameView.swift */; };
+		2C2D08E11BB6A2400071FD0C /* SKCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DA1BB6A2400071FD0C /* SKCalendarDayCell.swift */; };
+		2C2D08E21BB6A2400071FD0C /* SKCalendarMonthNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DB1BB6A2400071FD0C /* SKCalendarMonthNameView.swift */; };
+		2C2D08E31BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DC1BB6A2400071FD0C /* SKCalendarHorizontalFlowLayout.swift */; };
+		2C2D08E41BB6A2400071FD0C /* SKCalendarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DD1BB6A2400071FD0C /* SKCalendarHelpers.swift */; };
+		2C2D08E51BB6A2400071FD0C /* SKCircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08DE1BB6A2400071FD0C /* SKCircularButton.swift */; };
+		2C2D08E71BB6A6310071FD0C /* SKCalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08E61BB6A6310071FD0C /* SKCalendarDay.swift */; };
+		2C2D08E91BB6A6870071FD0C /* SKPresentableMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08E81BB6A6870071FD0C /* SKPresentableMonth.swift */; };
+		2C2D08EB1BB6A6B50071FD0C /* SKCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EA1BB6A6B50071FD0C /* SKCalendarMonth.swift */; };
+		2C2D08ED1BB6A7870071FD0C /* NSCalendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EC1BB6A7870071FD0C /* NSCalendar+Extensions.swift */; };
+		2C2D08EF1BB6AAD20071FD0C /* SKCalendarDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D08EE1BB6AAD20071FD0C /* SKCalendarDayTests.swift */; };
 		2C2D09161BB6B16F0071FD0C /* SKPresentableMonth.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08E81BB6A6870071FD0C /* SKPresentableMonth.swift */; };
 		2C2D09171BB6B16F0071FD0C /* SKCalendarDay.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08E61BB6A6310071FD0C /* SKCalendarDay.swift */; };
 		2C2D09181BB6B16F0071FD0C /* SKCalendarView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 2C2D08D81BB6A2400071FD0C /* SKCalendarView.swift */; };
@@ -324,6 +324,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -364,6 +365,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -387,6 +389,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -405,6 +408,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.SKCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -450,6 +454,7 @@
 				2C2D08D41BB6A22B0071FD0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C2D08D51BB6A22B0071FD0C /* Build configuration list for PBXNativeTarget "SKCalendarTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +463,7 @@
 				2C2D08D71BB6A22B0071FD0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
