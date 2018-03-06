@@ -1,8 +1,8 @@
 
 
-internal extension NSDateComponents {
+internal extension DateComponents {
     
-    convenience init(day: Int, month: Int, year: Int) {
+    init(day: Int, month: Int, year: Int) {
         self.init()
         self.day = day
         self.month = month
@@ -11,69 +11,70 @@ internal extension NSDateComponents {
     
 }
 
-internal extension NSCalendar {
+internal extension Calendar {
     
-    internal func defaultComponentsFromDate(date: NSDate) -> NSDateComponents {
-        return components([.Day, .Month, .Year], fromDate: date)
+    internal func defaultComponentsFromDate(date: Date) -> DateComponents {
+        return dateComponents([.day, .month, .year], from: date)
     }
     
-    internal func numberOfDaysInMonth(date: NSDate) -> Int {
-        let range = rangeOfUnit(.Day, inUnit:.Month, forDate: date)
-        return range.length
+    internal func numberOfDaysInMonth(date: Date) -> Int {
+        let dayRange = range(of: .day, in: .month, for: date)
+        return (dayRange!.upperBound - dayRange!.lowerBound)
     }
     
-    internal func numberOfDaysInMonthFromDateComponents(date: NSDateComponents) -> Int {
-        return numberOfDaysInMonth(dateFromComponents(date)!)
+    internal func numberOfDaysInMonthFromDateComponents(component: DateComponents) -> Int {
+        return numberOfDaysInMonth(date: date(from: component)!)
     }
     
-    internal func numberOfWeeksInMonth(date: NSDate) -> Int {
-        let range = rangeOfUnit(.WeekOfMonth, inUnit: NSCalendarUnit.Month, forDate: date)
-        return range.length
+    internal func numberOfWeeksInMonth(date: Date) -> Int {
+        let dayRange = range(of: .weekOfMonth, in: .month, for: date)
+
+        return dayRange!.upperBound - dayRange!.lowerBound
     }
     
-    internal func numberOfDaysBetweenDates(fromDate: NSDate, toDate: NSDate) -> Int {
-        let comp = components(.Day, fromDate: fromDate, toDate: toDate, options: [])
-        return comp.day
+    internal func numberOfDaysBetweenDates(fromDate: Date, toDate: Date) -> Int {
+        let comp = dateComponents([.day], from: fromDate, to: toDate)
+        return comp.day!
     }
     
-    internal func numberOfMonthsBetweenDates(fromDate: NSDate, toDate: NSDate) -> Int {
-        let comp = components(.Month, fromDate: fromDate, toDate: toDate, options: [])
-        return comp.month
+    internal func numberOfMonthsBetweenDates(fromDate: Date, toDate: Date) -> Int {
+        let comp = dateComponents([.month], from: fromDate, to: toDate)
+        return comp.month!
     }
     
-    internal func numberOfYearsBetweenDates(fromDate: NSDate, toDate: NSDate) -> Int {
-        let comp = components(.Year, fromDate: fromDate, toDate: toDate, options: [])
-        return comp.year
+    internal func numberOfYearsBetweenDates(fromDate: Date, toDate: Date) -> Int {
+        let comp = dateComponents([.year], from: fromDate, to: toDate)
+        return comp.year!
     }
     
-    internal func firstWeekDayFromDateComponents(dateComponents: NSDateComponents) -> Int {
-        return component(.Weekday, fromDate: dateFromComponents(dateComponents)!)
+    internal func firstWeekDayFromDateComponents(dateComponents: DateComponents) -> Int {
+        return component(.weekday, from: date(from: dateComponents)!)
     }
     
-    internal func nextDate(to date:NSDate, byAddingDateComponent dateComponent: NSDateComponents) -> NSDate {
-        return dateByAddingComponents(dateComponent, toDate: date, options: .MatchNextTime)!
+    internal func nextDate(to forDate:Date, byAddingDateComponent dateComponent: DateComponents) -> Date {
+        return date(byAdding: dateComponent, to: forDate)!
     }
     
-    internal func monthBeforeDate(date: NSDate) -> NSDate! {
-        let component = NSDateComponents()
+    internal func monthBeforeDate(date: Date) -> Date! {
+        var component = DateComponents()
         component.month = -1
         return nextDate(to: date, byAddingDateComponent: component)
     }
     
-    internal func monthAfterDate(date: NSDate) -> NSDate! {
-        let component = NSDateComponents()
+    internal func monthAfterDate(date: Date) -> Date! {
+        var component = DateComponents()
         component.month = 1
         return nextDate(to: date, byAddingDateComponent: component)
     }
     
-    internal func dayAfterDate(date: NSDate) -> NSDate! {
-        let component = NSDateComponents()
+    internal func dayAfterDate(date: Date) -> Date! {
+        var component = DateComponents()
         component.day = 1
         return nextDate(to: date, byAddingDateComponent: component)
     }
     
-    internal func dayBeforeDate(date: NSDate) -> NSDate! {
-        let component = NSDateComponents()
+    internal func dayBeforeDate(date: Date) -> Date! {
+        var component = DateComponents()
         component.day = -1
         return nextDate(to: date, byAddingDateComponent:component)
     }

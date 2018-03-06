@@ -14,17 +14,17 @@ internal class SKCalendarDayNameView: UICollectionReusableView {
     }
     
     private func createViews() {
-        let day1 = SKCalendarDayNameContainerView(frame: CGRectZero)
-        let day2 = SKCalendarDayNameContainerView(frame: CGRectZero)
-        let day3 = SKCalendarDayNameContainerView(frame: CGRectZero)
-        let day4 = SKCalendarDayNameContainerView(frame: CGRectZero)
-        let day5 = SKCalendarDayNameContainerView(frame: CGRectZero)
-        let day6 = SKCalendarDayNameContainerView(frame: CGRectZero)
-        let day7 = SKCalendarDayNameContainerView(frame: CGRectZero)
+        let day1 = SKCalendarDayNameContainerView(frame: .zero)
+        let day2 = SKCalendarDayNameContainerView(frame: .zero)
+        let day3 = SKCalendarDayNameContainerView(frame: .zero)
+        let day4 = SKCalendarDayNameContainerView(frame: .zero)
+        let day5 = SKCalendarDayNameContainerView(frame: .zero)
+        let day6 = SKCalendarDayNameContainerView(frame: .zero)
+        let day7 = SKCalendarDayNameContainerView(frame: .zero)
         
         let weekDays = SKCalendarAttributes.weekDaysSymbols().map({
             string in
-            return string.capitalizedString
+            return string.capitalized
         })
         
         day1.title = weekDays[0]
@@ -56,18 +56,24 @@ internal class SKCalendarDayNameView: UICollectionReusableView {
         let hFormat = "H:|[day1][day2(==day1)][day3(==day1)][day4(==day1)][day5(==day1)][day6(==day1)][day7(==day1)]|"
         let vFormat = "V:|[day1]|"
         
-        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat(hFormat, options:[.AlignAllBottom, .AlignAllTop], metrics: nil, views: views)
-        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat(vFormat, options: [], metrics: nil, views: views)
+        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat:hFormat,
+                                                          options:[.alignAllBottom, .alignAllTop],
+                                                          metrics: nil,
+                                                          views: views)
+        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat:vFormat,
+                                                          options: [],
+                                                          metrics: nil,
+                                                          views: views)
         
         addConstraints(hConstraints)
         addConstraints(vConstraints)
     }
     
-    private class SKCalendarDayNameContainerView: UIView {
+    internal class SKCalendarDayNameContainerView: UIView {
         
         private weak var titleLabel: UILabel!
         
-        private var title: String? {
+        var title: String? {
             set {
                 titleLabel.text = newValue
             }
@@ -87,24 +93,27 @@ internal class SKCalendarDayNameView: UICollectionReusableView {
         }
         
         private func createViews() {
-            let titleLabel = UILabel(frame: CGRectZero)
+            let titleLabel = UILabel(frame: .zero)
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
-            titleLabel.textColor = UIColor.blackColor()
+            titleLabel.textColor = UIColor.black
             titleLabel.font = UIFont(name: "HelveticaNeue", size: 12.0)
             addSubview(titleLabel)
             
             self.titleLabel = titleLabel
             
             let centerXConstraint = NSLayoutConstraint(item: titleLabel,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1.0,
                 constant: 0)
             
-            let yConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleLabel]|", options: [], metrics: nil, views: ["titleLabel": titleLabel])
             
+            let yConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[titleLabel]|",
+                                                              options: [],
+                                                              metrics: nil,
+                                                              views: ["titleLabel": titleLabel])
             addConstraint(centerXConstraint)
             addConstraints(yConstraints)
         }

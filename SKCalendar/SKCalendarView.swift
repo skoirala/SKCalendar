@@ -1,12 +1,12 @@
 
 public protocol SKCalendarViewDelegate: NSObjectProtocol {
-    func calendarView(calendarView: SKCalendarView!, didSelectDate date: NSDateComponents!)
+    func calendarView(calendarView: SKCalendarView!, didSelectDate date: DateComponents)
 }
 
 public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, SKCalendarMonthNameViewDelegate {
 
-    private let minimumDate: NSDate
-    private let maximumDate: NSDate
+    private let minimumDate: Date
+    private let maximumDate: Date
     
     private let cellIdentifier = "CellIdentifier"
     
@@ -25,21 +25,21 @@ public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
     public init(delegate: SKCalendarViewDelegate) {
         self.delegate = delegate
         
-        let minimumDateComponent = NSDateComponents()
+        var minimumDateComponent = DateComponents()
         minimumDateComponent.day = 1
         minimumDateComponent.year = 2008
         minimumDateComponent.month = 1
         
-        let maximumDateComponent = NSDateComponents()
+        var maximumDateComponent = DateComponents()
         maximumDateComponent.day = 30
         maximumDateComponent.year = 2199
         maximumDateComponent.month = 12
         
-        minimumDate = SKCalendarAttributes.calendar.dateFromComponents(minimumDateComponent)!
-        maximumDate = SKCalendarAttributes.calendar.dateFromComponents(maximumDateComponent)!
+        minimumDate = SKCalendarAttributes.calendar.date(from: minimumDateComponent)!
+        maximumDate = SKCalendarAttributes.calendar.date(from:maximumDateComponent)!
 
         
-        super.init(frame: CGRectZero)
+        super.init(frame: .zero)
         createViews()
         setupConstraints()
         
@@ -53,7 +53,7 @@ public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
         
         let collectionViewLayout = SKCalendarHorizontalFlowLayout()
         let collectionView = UICollectionView (
-            frame: CGRectZero,
+            frame: .zero,
             collectionViewLayout: collectionViewLayout
         )
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,23 +61,21 @@ public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         collectionViewLayout.interItemSpacing = 0
         collectionViewLayout.lineSpacing = 0
-        collectionView.backgroundColor = UIColor.clearColor()
+        collectionView.backgroundColor = .clear
         collectionView.alwaysBounceVertical = false
         
-        collectionView.pagingEnabled = true
+        collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         
-        collectionView.registerClass(
-            SKCalendarDayCell.self,
-            forCellWithReuseIdentifier: cellIdentifier
-        )
-        collectionView.registerClass(
-            SKCalendarMonthNameView.self,
-            forSupplementaryViewOfKind: SKCalendarMonthNameViewKind,
-            withReuseIdentifier: headerIdentifier)
-        collectionView.registerClass(SKCalendarDayNameView.self,
-            forSupplementaryViewOfKind: SKCalendarDayNameViewKind,
-            withReuseIdentifier: dayNameViewIdentifier)
+        collectionView.register(SKCalendarDayCell.self,
+                                forCellWithReuseIdentifier: cellIdentifier)
+        
+        collectionView.register(SKCalendarMonthNameView.self,
+                                forSupplementaryViewOfKind: SKCalendarMonthNameViewKind,
+                                withReuseIdentifier: headerIdentifier)
+        collectionView.register(SKCalendarDayNameView.self,
+                                forSupplementaryViewOfKind: SKCalendarDayNameViewKind,
+                                withReuseIdentifier: dayNameViewIdentifier)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -91,24 +89,23 @@ public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
     
     private func setupConstraints() {
         let views = [
-            "collectionView": collectionView
-        ]
+            "collectionView": collectionView!
+        ] as [String: Any]
+        
         let hFormat = "H:|[collectionView]|"
         let vFormat = "V:|[collectionView]|"
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat (
-            hFormat,
-            options: [],
-            metrics: nil,
-            views: views
-        )
+        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: hFormat,
+                                                                   options: [],
+                                                                   metrics: nil,
+                                                                   views: views)
+            
         
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat (
-            vFormat,
-            options: [],
-            metrics: nil,
-            views: views
-        )
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: vFormat,
+                                                                 options: [],
+                                                                 metrics: nil,
+                                                                 views: views)
+        
         
         addConstraints(horizontalConstraints)
         addConstraints(verticalConstraints)
@@ -122,74 +119,79 @@ public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
         let width = self.bounds.size.width / CGFloat(numberOfDaysToShow)
         collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20)
         collectionViewLayout.headerSize = CGSize(width: width, height: 40)
-        collectionViewLayout.dayNameViewSize = CGSizeMake(320, 30)
-        
-        scrollToSection(todayMonthIndex())
+        collectionViewLayout.dayNameViewSize = CGSize(width: 320, height: 30)
+        scrollToSection(section: todayMonthIndex())
         }
     
     // Mark: UICollectionViewDataSource
     
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return SKCalendarAttributes.calendar.numberOfMonthsBetweenDates(minimumDate, toDate: maximumDate)
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return SKCalendarAttributes.calendar.numberOfMonthsBetweenDates(fromDate: minimumDate,
+                                                                        toDate: maximumDate)
     }
     
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let month = SKPresentableMonth(minDate: minimumDate, atIndex: section)
         return month.totalDays
     }
     
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! SKCalendarDayCell
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
+                                                      for: indexPath) as! SKCalendarDayCell
         let month = SKPresentableMonth(minDate: minimumDate, atIndex: indexPath.section)
-        let calendarDay = month.dayForDayIndex(indexPath.row)
+        let calendarDay = month.dayForDayIndex(index: indexPath.row)
         cell.dayLabel.text = calendarDay.formattedDay()
         
         if calendarDay.dateComponents.month != month.actualMonth.dateComponent.month {
-            cell.dayLabel.textColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            cell.dayLabel.textColor = UIColor.white.withAlphaComponent(0.4)
         } else {
-            cell.dayLabel.textColor = UIColor.whiteColor()
+            cell.dayLabel.textColor = UIColor.white
         }
         
-        if indexPath.compare(todayDayIndex()) == NSComparisonResult.OrderedSame{
+        if indexPath.compare(todayDayIndex()) == .orderedSame {
             cell.isToday = true
         }
         
         return cell
     }
     
-    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == SKCalendarMonthNameViewKind {
-            return monthNameViewAtIndexPath(indexPath)
+            return monthNameViewAtIndexPath(indexPath: indexPath)
         }
-        let dayNameView = collectionView.dequeueReusableSupplementaryViewOfKind(
-            kind,
-            withReuseIdentifier: dayNameViewIdentifier,
-            forIndexPath: indexPath) as! SKCalendarDayNameView
+        let dayNameView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                          withReuseIdentifier: dayNameViewIdentifier,
+                                                                          for: indexPath) as! SKCalendarDayNameView
         return dayNameView
     }
 
-    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let currentMonth = SKPresentableMonth(minDate: minimumDate, atIndex: indexPath.section)
-        let calendarDay = currentMonth.dayForDayIndex(indexPath.row)
+        let calendarDay = currentMonth.dayForDayIndex(index: indexPath.row)
         
 
         // selected month is dimmed and is previous month
-        if calendarDay.dateComponents.month < currentMonth.actualMonth.dateComponent.month {
-            collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: indexPath.section - 1), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
-            collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        if calendarDay.dateComponents.month! < currentMonth.actualMonth.dateComponent.month! {
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: indexPath.section - 1),
+                                        at: .left,
+                                        animated: true)
+            collectionView.deselectItem(at: indexPath, animated: true)
             return
             
             // selected month is dimmed and is next month
-        } else if calendarDay.dateComponents.month > currentMonth.actualMonth.dateComponent.month {
-             collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: indexPath.section + 1), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
-            collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        } else if calendarDay.dateComponents.month! > currentMonth.actualMonth.dateComponent.month! {
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: indexPath.section + 1),
+                                        at: .left,
+                                        animated: true)
+            collectionView.deselectItem(at: indexPath, animated: true)
             return
         }
         
         selectedDay = calendarDay
-        delegate?.calendarView(self, didSelectDate: calendarDay.dateComponents)
-        
+        delegate.calendarView(calendarView: self,
+                              didSelectDate: calendarDay.dateComponents)
     }
     
     
@@ -198,7 +200,7 @@ public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
     internal func monthNameViewDidSelectPrevious(view: SKCalendarMonthNameView!, atSection section: Int) {
         let newSection = section - 1
         if newSection > 0 {
-            scrollToSection(newSection)
+            scrollToSection(section: newSection)
         }
     }
     
@@ -206,37 +208,40 @@ public class SKCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
         
         let newSection = section + 1
         
-        if newSection < numberOfSectionsInCollectionView(collectionView) {
-           scrollToSection(newSection)
+        if newSection < numberOfSections(in: collectionView) {
+           scrollToSection(section: newSection)
         }
     }
     
     private func scrollToSection(section: Int) {
-        assert(section < numberOfSectionsInCollectionView(collectionView), "Section cannot be greater than number of sections")
+        assert(section < numberOfSections(in: collectionView), "Section cannot be greater than number of sections")
         let contentOffset = CGPoint(x: CGFloat(section) * collectionView.bounds.size.width, y: 0)
         collectionView.setContentOffset(contentOffset, animated: true)
     }
     
     private func todayMonthIndex() -> Int {
-        let today = NSDate()
-        let month = SKCalendarAttributes.calendar.numberOfMonthsBetweenDates(minimumDate, toDate: today)
+        let today = Date()
+        let month = SKCalendarAttributes.calendar.numberOfMonthsBetweenDates(fromDate: minimumDate,
+                                                                             toDate: today)
         return month
     }
     
-    private func todayDayIndex() -> NSIndexPath {
+    private func todayDayIndex() -> IndexPath {
         let month = SKPresentableMonth(minDate: minimumDate, atIndex: todayMonthIndex())
-        let dateComponent = SKCalendarAttributes.calendar.defaultComponentsFromDate(NSDate())
-        let calendarDay = month.actualMonth.firstDay - 2 + dateComponent.day
-        return NSIndexPath(forItem: calendarDay, inSection: todayMonthIndex())
+        let dateComponent = SKCalendarAttributes.calendar.defaultComponentsFromDate(date: Date())
+        let calendarDay = month.actualMonth.firstDay - 2 + dateComponent.day!
+        return IndexPath(item: calendarDay, section: todayMonthIndex())
     }
     
-    private func monthNameViewAtIndexPath(indexPath: NSIndexPath) -> UICollectionReusableView {
+    private func monthNameViewAtIndexPath(indexPath: IndexPath) -> UICollectionReusableView {
         let month = SKPresentableMonth(minDate: minimumDate, atIndex: indexPath.section)
         
-        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind (
-            SKCalendarMonthNameViewKind, withReuseIdentifier: headerIdentifier,
-            forIndexPath: indexPath) as! SKCalendarMonthNameView
-        headerView.title = SKCalendarAttributes.formatMonthNameFromDate(SKCalendarAttributes.calendar.dateFromComponents(month.actualMonth.dateComponent)!)
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: SKCalendarMonthNameViewKind,
+                                                                         withReuseIdentifier: headerIdentifier,
+                                                                         for: indexPath) as! SKCalendarMonthNameView
+        let date = SKCalendarAttributes.calendar.date(from: month.actualMonth.dateComponent)
+        headerView.title = SKCalendarAttributes.formatMonthNameFromDate(date: date!)
         headerView.delegate = self
         headerView.sectionIndex = indexPath.section
         

@@ -15,7 +15,7 @@ internal class SKCalendarMonthNameView: UICollectionReusableView {
             titleLabel.text = title
         }
     }
-
+    
     private weak var titleLabel: UILabel!
     private weak var previousButton: SKCircularButton!
     private weak var nextButton: SKCircularButton!
@@ -33,29 +33,30 @@ internal class SKCalendarMonthNameView: UICollectionReusableView {
     }
     
     private func createViews() {
-        let titleLabel = UILabel(frame: CGRectZero)
+        let titleLabel = UILabel(frame: .zero)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont(name: "HelveticaNeue", size: 22.0)
         
         let previousButton = SKCircularButton()
         previousButton.translatesAutoresizingMaskIntoConstraints = false
-        previousButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        previousButton.setTitle("<", forState: .Normal)
+        previousButton.setTitleColor(UIColor.white,
+                                     for: .normal)
+        previousButton.setTitle("<", for: .normal)
         previousButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
         previousButton.addTarget(self,
-            action: "previousButtonPressed:",
-            forControlEvents: .TouchUpInside)
+                                 action: #selector(previousButtonPressed),
+                                 for: .touchUpInside)
         
         let nextButton = SKCircularButton()
         nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        nextButton.setTitle(">", forState: .Normal)
+        nextButton.setTitleColor(UIColor.white, for: .normal)
+        nextButton.setTitle(">", for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
         nextButton.addTarget(self,
-                action: "nextButtonPressed:",
-                forControlEvents: .TouchUpInside)
-
+                             action: #selector(nextButtonPressed),
+                             for: .touchUpInside)
+        
         
         addSubview(titleLabel)
         addSubview(previousButton)
@@ -68,83 +69,83 @@ internal class SKCalendarMonthNameView: UICollectionReusableView {
     
     private func setupConstraints() {
         let xConstraint = NSLayoutConstraint(item: titleLabel,
-            attribute: .CenterX,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .CenterX,
-            multiplier: 1.0,
-            constant: 0)
+                                             attribute: .centerX,
+                                             relatedBy: .equal,
+                                             toItem: self,
+                                             attribute: .centerX,
+                                             multiplier: 1.0,
+                                             constant: 0)
         let yConstraint = NSLayoutConstraint(item: titleLabel,
-            attribute: .CenterY,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .CenterY,
-            multiplier: 1.0,
-            constant: 0)
+                                             attribute: .centerY,
+                                             relatedBy: .equal,
+                                             toItem: self,
+                                             attribute: .centerY,
+                                             multiplier: 1.0,
+                                             constant: 0)
         
         let previousButtonCenterY = NSLayoutConstraint(item: previousButton,
-            attribute: .CenterY,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .CenterY,
-            multiplier: 1.0,
-            constant: 0)
+                                                       attribute: .centerY,
+                                                       relatedBy: .equal,
+                                                       toItem: self,
+                                                       attribute: .centerY,
+                                                       multiplier: 1.0,
+                                                       constant: 0)
         
         let previousButtonHeightConstraint = NSLayoutConstraint(item: previousButton,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Height,
-            multiplier: 0.75,
-            constant: 0)
+                                                                attribute: .height,
+                                                                relatedBy: .equal,
+                                                                toItem: self,
+                                                                attribute: .height,
+                                                                multiplier: 0.75,
+                                                                constant: 0)
         
         let previousButtonEqualWidthConstraint = NSLayoutConstraint(item: previousButton,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: previousButton,
-            attribute: .Width,
-            multiplier: 1.0,
-            constant: 0)
+                                                                    attribute: .height,
+                                                                    relatedBy: .equal,
+                                                                    toItem: previousButton,
+                                                                    attribute: .width,
+                                                                    multiplier: 1.0,
+                                                                    constant: 0)
         
         let previousButtonXConstraint = NSLayoutConstraint(item: previousButton,
-            attribute: .Left,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Left,
-            multiplier: 1.0,
-            constant: 10)
+                                                           attribute: .left,
+                                                           relatedBy: .equal,
+                                                           toItem: self,
+                                                           attribute: .left,
+                                                           multiplier: 1.0,
+                                                           constant: 10)
         
         let nextButtonCenterY = NSLayoutConstraint(item: nextButton,
-            attribute: .CenterY,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .CenterY,
-            multiplier: 1.0,
-            constant: 0)
+                                                   attribute: .centerY,
+                                                   relatedBy: .equal,
+                                                   toItem: self,
+                                                   attribute: .centerY,
+                                                   multiplier: 1.0,
+                                                   constant: 0)
         
         let nextButtonHeightConstraint = NSLayoutConstraint(item: nextButton,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Height,
-            multiplier: 0.75,
-            constant: 0)
+                                                            attribute: .height,
+                                                            relatedBy: .equal,
+                                                            toItem: self,
+                                                            attribute: .height,
+                                                            multiplier: 0.75,
+                                                            constant: 0)
         
         let nextButtonEqualWidthConstraint = NSLayoutConstraint(item: nextButton,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: nextButton,
-            attribute: .Width,
-            multiplier: 1.0,
-            constant: 0)
+                                                                attribute: .height,
+                                                                relatedBy: .equal,
+                                                                toItem: nextButton,
+                                                                attribute: .width,
+                                                                multiplier: 1.0,
+                                                                constant: 0)
         
         let nextButtonXConstraint = NSLayoutConstraint(item: nextButton,
-            attribute: .Right,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Right,
-            multiplier: 1.0,
-            constant: -10)
+                                                       attribute: .right,
+                                                       relatedBy: .equal,
+                                                       toItem: self,
+                                                       attribute: .right,
+                                                       multiplier: 1.0,
+                                                       constant: -10)
         
         
         addConstraints(
@@ -159,15 +160,16 @@ internal class SKCalendarMonthNameView: UICollectionReusableView {
                 nextButtonHeightConstraint,
                 nextButtonEqualWidthConstraint,
                 nextButtonXConstraint,
-            ]
+                ]
         )
     }
     
-    private dynamic func previousButtonPressed(sender: AnyObject) {
-        delegate?.monthNameViewDidSelectPrevious(self, atSection:sectionIndex)
+    @objc private dynamic func previousButtonPressed(sender: AnyObject) {
+        delegate?.monthNameViewDidSelectPrevious(view: self, atSection:sectionIndex)
     }
     
-    private dynamic func nextButtonPressed(sender: AnyObject) {
-        delegate?.monthNameViewDidSelectNext(self, atSection:sectionIndex)
+    @objc private dynamic func nextButtonPressed(sender: AnyObject) {
+        delegate?.monthNameViewDidSelectNext(view: self, atSection:sectionIndex)
     }
 }
+

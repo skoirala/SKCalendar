@@ -9,29 +9,29 @@ internal class SKPresentableMonth {
     internal let firstDay: SKCalendarDay
     internal let lastDay: SKCalendarDay
     
-    init(date: NSDate) {
+    init(date: Date) {
         actualMonth = SKCalendarMonth(date: date)
         
-        totalDays = SKCalendarAttributes.calendar.numberOfWeeksInMonth(date) * 7
+        totalDays = SKCalendarAttributes.calendar.numberOfWeeksInMonth(date: date) * 7
         
         let actualMonthFirstDay =  actualMonth.firstDay
         
-        let component = NSDateComponents()
+        var component = DateComponents()
         component.day = 1 - actualMonthFirstDay
         
         let firstDayDate = SKCalendarAttributes.calendar.nextDate(to: date, byAddingDateComponent: component)
         firstDay = SKCalendarDay(day: firstDayDate)
         
         
-        let lastDayComponent = NSDateComponents()
+        var lastDayComponent = DateComponents()
         lastDayComponent.day = 7 - actualMonth.lastDay
         
         let lastDayDate = SKCalendarAttributes.calendar.nextDate(to: firstDayDate, byAddingDateComponent: lastDayComponent)
         lastDay = SKCalendarDay(day: lastDayDate)
     }
     
-    convenience init(minDate: NSDate, atIndex index: Int) {
-        let dateComponent = NSDateComponents()
+    convenience init(minDate: Date, atIndex index: Int) {
+        var dateComponent = DateComponents()
         dateComponent.month = index
         
         let date = SKCalendarAttributes.calendar.nextDate(to: minDate, byAddingDateComponent: dateComponent)
@@ -39,6 +39,6 @@ internal class SKPresentableMonth {
     }
     
     func dayForDayIndex(index: Int) -> SKCalendarDay {
-        return  firstDay.dayByAddingNumberOfDay(index)
+        return  firstDay.dayByAddingNumberOfDay(days: index)
     }
 }

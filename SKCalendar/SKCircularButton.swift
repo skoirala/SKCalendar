@@ -1,9 +1,9 @@
 
 internal class SKCircularButton: UIButton {
     
-    private var highlightedColor: UIColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+    private var highlightedColor: UIColor = UIColor.white.withAlphaComponent(0.2)
     
-    override internal var highlighted: Bool {
+    override internal var isHighlighted: Bool {
         didSet {
             setNeedsDisplay()
         }
@@ -15,17 +15,21 @@ internal class SKCircularButton: UIButton {
     
     private var circularPath: UIBezierPath {
         get {
-            let dimension = min(CGRectGetWidth(bounds), CGRectGetHeight(bounds)) / 2.0 - strokeWidth
+            let dimension = min(bounds.width, bounds.height) / 2.0 - strokeWidth
             
-            let bezierPath = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetMidY(bounds)), radius: dimension, startAngle: 0, endAngle: CGFloat(2 * M_PI), clockwise: true)
+            let bezierPath = UIBezierPath(arcCenter: CGPoint(x: bounds.midX, y: bounds.midY),
+                                          radius: dimension,
+                                          startAngle: 0,
+                                          endAngle: CGFloat.pi * 2.0,
+                                          clockwise: true)
             return bezierPath
         }
     }
     
     override init(frame: CGRect) {
-        super.init(frame: CGRectZero)
-        self.opaque = true
-        self.backgroundColor = UIColor.clearColor()
+        super.init(frame: .zero)
+        self.isOpaque = true
+        self.backgroundColor = .clear
     }
     
     internal var strokeWidth: CGFloat = 2 {
@@ -34,14 +38,14 @@ internal class SKCircularButton: UIButton {
         }
     }
     
-    internal var strokeColor: UIColor = UIColor.whiteColor() {
+    internal var strokeColor: UIColor = .white {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    override internal func imageRectForContentRect(contentRect: CGRect) -> CGRect {
-        if let image = self.imageForState(.Normal) {
+    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
+        if let image = self.image(for: .normal) {
             let size = image.size
             let maxDimension = max(size.width, size.height)
             let ratio = (min(contentRect.size.width, contentRect.size.height) - 40) / maxDimension
@@ -57,16 +61,15 @@ internal class SKCircularButton: UIButton {
             )
             
         }
-        return CGRectZero
+        return .zero
     }
     
-    override internal func drawRect(rect: CGRect) {
-        
+    override func draw(_ rect: CGRect) {
         strokeColor.setStroke()
         
         circularPath.lineWidth = strokeWidth
         
-        if self.highlighted {
+        if self.isHighlighted {
             highlightedColor.setFill()
             circularPath.fill()
         }
@@ -74,7 +77,7 @@ internal class SKCircularButton: UIButton {
         circularPath.stroke()
     }
     
-    override internal func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
-        return circularPath.containsPoint(point)
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return circularPath.contains(point)
     }
 }

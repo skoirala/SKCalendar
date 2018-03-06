@@ -1,33 +1,34 @@
 
 internal class SKCalendarMonth {
     
-    let dateComponent: NSDateComponents
+    let dateComponent: DateComponents
     
-    internal init(dateComponent: NSDateComponents) {
-        self.dateComponent = dateComponent
-        self.dateComponent.day = 1
+    internal init(dateComponent: DateComponents) {
+        var component = dateComponent
+        component.day = 1
+        self.dateComponent = component
     }
     
-    convenience init(date: NSDate!) {
-        let components = SKCalendarAttributes.calendar.defaultComponentsFromDate(date)
+    convenience init(date: Date) {
+        let components = SKCalendarAttributes.calendar.defaultComponentsFromDate(date: date)
         self.init(dateComponent: components)
     }
     
     internal var firstDay: Int {
-        return SKCalendarAttributes.calendar.firstWeekDayFromDateComponents(dateComponent)
+        return SKCalendarAttributes.calendar.firstWeekDayFromDateComponents(dateComponents: dateComponent)
     }
     
     internal var lastDay: Int {
-        let component = SKCalendarAttributes.calendar.components(NSCalendarUnit.Weekday, fromDate: lastDate)
-        return component.weekday
+        return SKCalendarAttributes.calendar.component(.weekday, from: lastDate)
     }
     
-    internal var lastDate: NSDate {
-        let component = dateComponent.copy() as! NSDateComponents
+    internal var lastDate: Date {
+        var component = dateComponent
         component.day = numberOfDays
-        return SKCalendarAttributes.calendar.dateFromComponents(component)!
+        return SKCalendarAttributes.calendar.date(from: component)!
     }
+    
     internal var numberOfDays: Int {
-        return SKCalendarAttributes.calendar.numberOfDaysInMonthFromDateComponents(dateComponent)
+        return SKCalendarAttributes.calendar.numberOfDaysInMonthFromDateComponents(component: dateComponent)
     }
 }

@@ -7,10 +7,10 @@ internal class SKCalendarDayCell: UICollectionViewCell {
     
     class SKCalendarDayCellHighlightedView: UIView {
         lazy private var indicatorLayer: CAShapeLayer = {
-
             let shapeLayer = CAShapeLayer()
-
-            shapeLayer.fillColor = UIColor.whiteColor().colorWithAlphaComponent(0.2).CGColor
+            shapeLayer.rasterizationScale = UIScreen.main.scale
+            shapeLayer.shouldRasterize = true
+            shapeLayer.fillColor = UIColor.white.withAlphaComponent(0.2).cgColor
             return shapeLayer
         }()
         
@@ -25,17 +25,15 @@ internal class SKCalendarDayCell: UICollectionViewCell {
         
         override func layoutSubviews() {
             super.layoutSubviews()
-            let bezierPath = UIBezierPath(ovalInRect: CGRectInset(bounds, 5, 5))
-            indicatorLayer.path = bezierPath.CGPath
+            let bezierPath = UIBezierPath(ovalIn: bounds.insetBy(dx: 5, dy: 5))
+            indicatorLayer.path = bezierPath.cgPath
             indicatorLayer.position = self.center
             indicatorLayer.bounds = bounds
         }
-        
-        
     }
     
     func indicatorBounds() -> CGRect {
-        return CGRectInset(bounds, 5, 5)
+        return bounds.insetBy(dx: 5, dy: 5)
     }
     
     required internal init(coder aDecoder: NSCoder) {
@@ -46,19 +44,20 @@ internal class SKCalendarDayCell: UICollectionViewCell {
         didSet {
             if isToday {
                 let indicator = createTodayIndicator()
-                layer.insertSublayer(indicator, atIndex:0)
+                layer.insertSublayer(indicator, at: 0)
                 todayIndicator = indicator
             }
         }
     }
     
     func createTodayIndicator() -> CAShapeLayer {
-        let bezierPath = UIBezierPath(ovalInRect: indicatorBounds())
+        let bezierPath = UIBezierPath(ovalIn: indicatorBounds())
         let shapeLayer = CAShapeLayer()
+        shapeLayer.rasterizationScale = UIScreen.main.scale
         shapeLayer.bounds = self.bounds
         shapeLayer.position = self.center
-        shapeLayer.path = bezierPath.CGPath
-        shapeLayer.fillColor = UIColor.redColor().CGColor
+        shapeLayer.path = bezierPath.cgPath
+        shapeLayer.fillColor = UIColor.red.cgColor
         return shapeLayer
     }
     
@@ -68,7 +67,7 @@ internal class SKCalendarDayCell: UICollectionViewCell {
         createViews()
         setupConstraints()
         
-        selectedBackgroundView = SKCalendarDayCellHighlightedView(frame: CGRectZero)
+        selectedBackgroundView = SKCalendarDayCellHighlightedView(frame: .zero)
     }
     
     internal override func layoutSubviews() {
@@ -76,8 +75,8 @@ internal class SKCalendarDayCell: UICollectionViewCell {
         todayIndicator?.frame = self.bounds
     }
     
-    internal override func layoutSublayersOfLayer(layer: CALayer) {
-        super.layoutSublayersOfLayer(layer)
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
         todayIndicator?.frame = self.bounds
     }
     
@@ -87,10 +86,10 @@ internal class SKCalendarDayCell: UICollectionViewCell {
     }
     
     private func createViews() {
-        let dayLabel = UILabel(frame: CGRectZero)
+        let dayLabel = UILabel(frame: .zero)
         dayLabel.translatesAutoresizingMaskIntoConstraints = false
-        dayLabel.textAlignment = .Center
-        dayLabel.textColor = UIColor.whiteColor()
+        dayLabel.textAlignment = .center
+        dayLabel.textColor = UIColor.white
         dayLabel.font = UIFont(name: "AlNile-Bold", size: 24.0)
         contentView.addSubview(dayLabel)
         self.dayLabel = dayLabel
@@ -100,14 +99,13 @@ internal class SKCalendarDayCell: UICollectionViewCell {
         
         let hFormat = "H:|-5-[dayLabel]-5-|"
         let vFormat = "V:|-5-[dayLabel]-5-|"
-        let views = ["dayLabel": dayLabel]
+        let views = ["dayLabel": dayLabel] as [String: Any]
         for format in [hFormat, vFormat] {
-            contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-                format,
-                options: [],
-                metrics: nil,
-                views: views)
-            )
+            let constraints = NSLayoutConstraint.constraints(withVisualFormat:format,
+                                                             options: [],
+                                                             metrics: nil,
+                                                             views: views)
+            contentView.addConstraints(constraints)
         }
     }
 }
